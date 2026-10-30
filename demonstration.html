@@ -3,30 +3,45 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>CS543 Tutorial 8 — Live Demonstration Video &amp; Walkthrough</title>
+<title>CampusEats &mdash; Live Application Demonstration</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
 <style>
   body {
     margin: 0;
     padding: 24px;
     background: #0f172a;
     color: #f8fafc;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   }
   .container {
-    max-width: 940px;
+    max-width: 980px;
     margin: 0 auto;
   }
   header {
     text-align: center;
     margin-bottom: 24px;
-    border-bottom: 1px solid #334155;
-    padding-bottom: 18px;
+    border-bottom: 1px solid #1e293b;
+    padding-bottom: 20px;
+  }
+  .brand-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(234, 88, 12, 0.18);
+    border: 1px solid rgba(234, 88, 12, 0.35);
+    color: #fb923c;
+    padding: 5px 14px;
+    border-radius: 9999px;
+    font-size: 13px;
+    font-weight: 700;
+    margin-bottom: 12px;
   }
   h1 {
-    color: #38bdf8;
+    color: #ffffff;
     margin: 0 0 8px;
-    font-size: 26px;
+    font-size: 28px;
     font-weight: 800;
+    letter-spacing: -0.5px;
   }
   .sub {
     color: #94a3b8;
@@ -36,10 +51,10 @@
   .card {
     background: #1e293b;
     border: 1px solid #334155;
-    border-radius: 14px;
-    padding: 20px;
+    border-radius: 16px;
+    padding: 22px;
     margin-bottom: 24px;
-    box-shadow: 0 10px 25px -5px rgba(0,0,0,0.4);
+    box-shadow: 0 12px 30px -6px rgba(0,0,0,0.4);
   }
   .card-title {
     font-size: 17px;
@@ -52,11 +67,11 @@
   }
   video {
     width: 100%;
-    border-radius: 10px;
-    border: 1.5px solid #475569;
+    border-radius: 12px;
+    border: 1px solid #475569;
     background: #000;
     display: block;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.5);
   }
   .action-row {
     display: flex;
@@ -72,28 +87,30 @@
     flex-wrap: wrap;
   }
   .badge {
-    background: #0369a1;
-    color: #e0f2fe;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    color: #e2e8f0;
     font-size: 12px;
-    padding: 5px 12px;
+    padding: 6px 12px;
     border-radius: 6px;
     font-weight: 600;
   }
   .btn-download {
-    background: #2563eb;
+    background: #ea580c;
     color: white;
     text-decoration: none;
-    padding: 6px 14px;
-    border-radius: 6px;
+    padding: 7px 16px;
+    border-radius: 8px;
     font-size: 13px;
-    font-weight: 600;
+    font-weight: 700;
     display: inline-flex;
     align-items: center;
     gap: 6px;
-    transition: background 0.2s;
+    transition: all 0.2s;
   }
   .btn-download:hover {
-    background: #1d4ed8;
+    background: #c2410c;
+    transform: translateY(-1px);
   }
   .info-grid {
     display: grid;
@@ -104,22 +121,14 @@
   .info-box {
     background: #0f172a;
     border: 1px solid #334155;
-    border-radius: 10px;
-    padding: 14px;
+    border-radius: 12px;
+    padding: 16px;
     font-size: 13.5px;
   }
   .info-box h4 {
     margin: 0 0 8px;
-    color: #38bdf8;
+    color: #fb923c;
     font-size: 15px;
-  }
-  code {
-    background: #334155;
-    padding: 2px 6px;
-    border-radius: 4px;
-    font-family: monospace;
-    font-size: 12.5px;
-    color: #f1f5f9;
   }
 </style>
 </head>
@@ -127,26 +136,26 @@
 
 <div class="container">
   <header>
-    <h1>🍴 CS543 Web Services · Tutorial 8 Demonstration</h1>
-    <p class="sub">CampusEats Catalogue &mdash; HTML/CSS &rarr; REST API (Node + Express) &rarr; Data</p>
+    <div class="brand-pill">🍔 CampusEats Live Walkthrough</div>
+    <h1>Live Application Demonstration</h1>
+    <p class="sub">Complete walkthrough: Exploring menu, dynamic search filtering &amp; adding new dishes</p>
   </header>
 
   <!-- Video Player Card -->
   <div class="card">
     <div class="card-title">
-      <span>🎬 Live Interactive Demonstration Video</span>
-      <span style="font-size: 13px; color: #4ade80; font-weight: 600;">● MP4 (H.264) + WebM</span>
+      <span>🎬 Master Walkthrough Video</span>
+      <span style="font-size: 13px; color: #4ade80; font-weight: 600;">● Universal MP4 Video</span>
     </div>
     <video controls autoplay loop muted playsinline>
       <source src="demonstration.mp4" type="video/mp4">
-      <source src="demonstration.webm" type="video/webm">
       Your browser does not support the video tag.
     </video>
     <div class="action-row">
       <div class="badges">
-        <span class="badge">GET /items (Reads menu)</span>
-        <span class="badge">POST /items (Adds dish)</span>
-        <span class="badge">201 Created &amp; 404 Handled</span>
+        <span class="badge">✨ Real-time Kitchen Catalogue</span>
+        <span class="badge">🔍 Interactive Live Search</span>
+        <span class="badge">⚡ Instant Dish Additions</span>
       </div>
       <div>
         <a href="demonstration.mp4" download class="btn-download">⬇ Download MP4 Video</a>
@@ -157,31 +166,29 @@
   <!-- GIF Fallback Card -->
   <div class="card">
     <div class="card-title">
-      <span>🎞️ Universal Animated GIF (Direct Autoplay)</span>
+      <span>🎞️ Auto-Looping Preview Animation</span>
       <a href="demonstration.gif" download class="btn-download" style="background:#475569;">⬇ Download GIF</a>
     </div>
-    <img src="demonstration.gif" alt="Tutorial 8 Demonstration GIF" style="width:100%; border-radius:10px; border:1.5px solid #475569; display:block;">
+    <img src="demonstration.gif" alt="CampusEats Demonstration GIF" style="width:100%; border-radius:12px; border:1px solid #475569; display:block;">
   </div>
 
-  <!-- Architecture & Endpoints -->
+  <!-- Key Highlights -->
   <div class="info-grid">
     <div class="info-box">
-      <h4>🏗️ Architecture Flow</h4>
-      <p style="margin: 0; line-height: 1.6;">
-        <b>1. Browser Frontend:</b> <code>public/index.html</code> + <code>style.css</code><br>
-        ⬇️ <i>HTTP REST Requests (JSON)</i><br>
-        <b>2. REST API Server:</b> Node.js + Express (<code>server.js</code> on port 3000)<br>
-        ⬇️ <i>In-Memory Persistence</i><br>
-        <b>3. Data:</b> <code>items</code> array
+      <h4>✨ Key App Features</h4>
+      <p style="margin: 0; line-height: 1.6; color: #cbd5e1;">
+        &bull; <b>Live Menu Browsing:</b> Instant visual cards with dish icons, prices &amp; dietary tags.<br>
+        &bull; <b>Real-time Search:</b> Instant type-ahead dish filtering without reloading.<br>
+        &bull; <b>Category Filters:</b> One-click switching between Meals, Snacks &amp; Drinks.
       </p>
     </div>
     <div class="info-box">
-      <h4>🧪 REST API Verification</h4>
-      <ul style="margin: 0; padding-left: 18px; line-height: 1.6;">
-        <li><code>GET /items</code> &mdash; returns <code>200 OK</code> with all dishes</li>
-        <li><code>GET /items/:id</code> &mdash; returns dish or <code>404 Not Found</code></li>
-        <li><code>POST /items</code> &mdash; adds dish with <code>201 Created</code>, or <code>422</code> on missing name</li>
-      </ul>
+      <h4>⚡ Instant Kitchen Additions</h4>
+      <p style="margin: 0; line-height: 1.6; color: #cbd5e1;">
+        &bull; <b>Quick Input Form:</b> Easily add any dish name &amp; price in INR.<br>
+        &bull; <b>Seamless Update:</b> Instantly updates kitchen catalogue with animated toast confirmation.<br>
+        &bull; <b>Responsive Layout:</b> Designed for clean desktop and mobile use.
+      </p>
     </div>
   </div>
 </div>

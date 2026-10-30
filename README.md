@@ -14,8 +14,8 @@ This implementation includes high-definition working demonstrations:
 
 | Format | File Link | Description | Compatibility |
 | :--- | :--- | :--- | :--- |
-| **Unified MP4 Video (Single Master Video)** | [**`demonstration.mp4`**](demonstration.mp4) | Complete single video showing terminal curl tests, live UI typing, and 404 test | Opens natively in Windows Media Player, Movies & TV, VLC, Chrome, Edge |
-| **Interactive Player** | [**`demonstration.html`**](demonstration.html) | Modern browser video player with controls & API specs | Open directly in Edge, Chrome, Firefox, or Safari |
+| **Unified MP4 Video (Single Master Video)** | [**`demonstration.mp4`**](demonstration.mp4) | High-definition video showing live menu browsing, type-ahead search, and instant dish additions | Opens natively in Windows Media Player, Movies & TV, VLC, Chrome, Edge |
+| **Interactive Player** | [**`demonstration.html`**](demonstration.html) | Modern browser video player with controls & app specs | Open directly in Edge, Chrome, Firefox, or Safari |
 | **Animated Preview GIF** | [**`demonstration.gif`**](demonstration.gif) | Auto-looping animated preview of the entire flow | Embedded below; views anywhere without player |
 
 ### 🎞️ Live Demonstration Preview (Auto-Loop):
@@ -32,7 +32,8 @@ Browser (Front-end UI) ──HTTP REST (JSON)──> REST API (Node + Express) �
 ```
 
 1. **Front-End Layer (`public/index.html`, `public/style.css`):**
-   - Clean, modern, responsive UI with culinary badges, live counter, and dynamic toast notifications.
+   - Premium, clean food catalogue application layout (`CampusEats`).
+   - Pure, realistic user experience with food icons, vegetarian/non-vegetarian indicators, live search filtering, category pills, and instant toast notifications.
    - Uses browser `fetch()` for seamless asynchronous HTTP requests (`GET /items` to render, `POST /items` to create).
 2. **REST API Server Layer (`server.js`):**
    - Powered by **Node.js** and **Express.js** running on `http://localhost:3000`.
