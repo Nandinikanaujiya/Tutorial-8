@@ -1,45 +1,144 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>CampusEats Catalogue</title>
-<link rel="stylesheet" href="style.css">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CampusEats Catalogue</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<h1>CampusEats Catalogue</h1>
-<p class="sub">The menu &mdash; served by a REST API (Node + Express)</p>
-<div id="list">Loading&hellip;</div>
 
-<form id="addForm">
-<h3>Add a dish</h3>
-<input id="name" placeholder="Dish name" required>
-<input id="price" type="number" placeholder="Price (rupees)">
-<button type="submit">Add dish</button>
-</form>
+<div class="app-container">
+  <!-- Header Banner -->
+  <header class="header-banner">
+    <div class="header-top">
+      <div class="brand-badge">
+        <span class="status-dot"></span> REST API Active
+      </div>
+      <span style="font-size: 0.8rem; opacity: 0.85;">CS543 · Tut 8</span>
+    </div>
+    <h1>🍴 CampusEats Catalogue</h1>
+    <p class="sub">The menu &mdash; served by a REST API (Node + Express)</p>
+  </header>
+
+  <!-- Body Content -->
+  <main class="content-body">
+    <div class="section-label">
+      <span>Available Dishes</span>
+      <span id="dishCounter" class="dish-count">0 items</span>
+    </div>
+
+    <!-- The Menu List (Required by Tutorial) -->
+    <div id="list">
+      <div class="loading-indicator">Loading menu items&hellip;</div>
+    </div>
+
+    <!-- Add a Dish Form (Required by Tutorial) -->
+    <form id="addForm">
+      <h3>✨ Add a new dish</h3>
+      <div class="form-row">
+        <div class="input-group" style="flex: 2;">
+          <input id="name" placeholder="Dish name (e.g. Masala Dosa)" required>
+        </div>
+        <div class="input-group" style="flex: 1.2;">
+          <input id="price" type="number" placeholder="Price (₹ rupees)" min="0">
+        </div>
+        <button type="submit">
+          <span>+ Add dish</span>
+        </button>
+      </div>
+      <div id="toast" class="alert-toast">
+        <span>✅</span>
+        <span id="toastMsg">Dish added successfully!</span>
+      </div>
+    </form>
+
+    <footer class="footer-info">
+      <span>Layer: <code>Node.js + Express</code></span>
+      <span>Storage: <code>In-Memory Array</code></span>
+    </footer>
+  </main>
+</div>
+
 <script>
-// 1. READ: GET /items, then draw the list
-async function load() {
-  const res = await fetch('/items');
-  const items = await res.json();
-  document.getElementById('list').innerHTML = items.map(i =>
-    `<div class="dish"><span class="name">${i.name}</span>` +
-    `<span class="price">&#8377;${i.price}</span></div>`).join('');
+// Helper to pick a fun culinary emoji based on the dish name
+function getDishIcon(name) {
+  const lower = name.toLowerCase();
+  if (lower.includes('thali') || lower.includes('rice') || lower.includes('curry') || lower.includes('biryani')) return '🍛';
+  if (lower.includes('roll') || lower.includes('wrap') || lower.includes('shawarma')) return '🌯';
+  if (lower.includes('dosa') || lower.includes('idli') || lower.includes('pancake')) return '🥞';
+  if (lower.includes('coffee') || lower.includes('tea') || lower.includes('chai')) return '☕';
+  if (lower.includes('burger')) return '🍔';
+  if (lower.includes('pizza')) return '🍕';
+  if (lower.includes('jamun') || lower.includes('sweet') || lower.includes('cake') || lower.includes('dessert')) return '🍨';
+  if (lower.includes('samosa') || lower.includes('chaat') || lower.includes('kachori')) return '🥟';
+  if (lower.includes('shake') || lower.includes('juice') || lower.includes('smoothie')) return '🥤';
+  return '🍽️';
 }
-// 2. WRITE: the form POSTs a new dish, then refreshes the list
+
+// 1. READ: GET /items, then draw the list (Exact Tutorial Logic)
+async function load() {
+  try {
+    const res = await fetch('/items');
+    const items = await res.json();
+    
+    // Update counter
+    const counter = document.getElementById('dishCounter');
+    if (counter) counter.innerText = `${items.length} ${items.length === 1 ? 'dish' : 'dishes'}`;
+
+    document.getElementById('list').innerHTML = items.map(i =>
+      `<div class="dish">` +
+        `<div class="dish-left">` +
+          `<span class="dish-icon">${getDishIcon(i.name)}</span>` +
+          `<span class="name">${i.name}</span>` +
+        `</div>` +
+        `<span class="price">&#8377;${i.price}</span>` +
+      `</div>`).join('');
+  } catch (err) {
+    document.getElementById('list').innerHTML = `<div class="loading-indicator" style="color: #ef4444;">Failed to connect to API on http://localhost:3000</div>`;
+  }
+}
+
+// 2. WRITE: the form POSTs a new dish, then refreshes the list (Exact Tutorial Logic)
 document.getElementById('addForm').addEventListener('submit', async (e) => {
   e.preventDefault();
-  const name = document.getElementById('name').value;
-  const price = document.getElementById('price').value;
-  await fetch('/items', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ name, price })
-  });
-  e.target.reset();
-  load();
+  const nameInput = document.getElementById('name');
+  const priceInput = document.getElementById('price');
+  const name = nameInput.value.trim();
+  const price = priceInput.value;
+
+  try {
+    const res = await fetch('/items', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ name, price })
+    });
+
+    if (res.ok) {
+      const added = await res.json();
+      showToast(`Added "${added.name}" (₹${added.price}) to the menu!`);
+      e.target.reset();
+      load();
+    }
+  } catch (err) {
+    console.error('Error adding dish:', err);
+  }
 });
+
+function showToast(msg) {
+  const toast = document.getElementById('toast');
+  const toastMsg = document.getElementById('toastMsg');
+  if (toast && toastMsg) {
+    toastMsg.innerText = msg;
+    toast.style.display = 'flex';
+    setTimeout(() => {
+      toast.style.display = 'none';
+    }, 2800);
+  }
+}
+
 load();
 </script>
+
 </body>
 </html>

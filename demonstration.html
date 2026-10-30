@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>CS543 Tutorial 8 — Live Demonstration</title>
+<title>CS543 Tutorial 8 — Live Demonstration Video &amp; Walkthrough</title>
 <style>
   body {
     margin: 0;
@@ -13,62 +13,87 @@
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   }
   .container {
-    max-width: 960px;
+    max-width: 940px;
     margin: 0 auto;
   }
   header {
     text-align: center;
     margin-bottom: 24px;
     border-bottom: 1px solid #334155;
-    padding-bottom: 16px;
+    padding-bottom: 18px;
   }
   h1 {
     color: #38bdf8;
     margin: 0 0 8px;
-    font-size: 24px;
+    font-size: 26px;
+    font-weight: 800;
   }
   .sub {
     color: #94a3b8;
-    font-size: 14px;
+    font-size: 15px;
     margin: 0;
   }
   .card {
     background: #1e293b;
     border: 1px solid #334155;
-    border-radius: 10px;
-    padding: 16px;
+    border-radius: 14px;
+    padding: 20px;
     margin-bottom: 24px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    box-shadow: 0 10px 25px -5px rgba(0,0,0,0.4);
   }
   .card-title {
-    font-size: 16px;
+    font-size: 17px;
     font-weight: 700;
     color: #f1f5f9;
-    margin-bottom: 12px;
+    margin-bottom: 14px;
     display: flex;
     justify-content: space-between;
     align-items: center;
   }
-  video, img.demo-media {
+  video {
     width: 100%;
-    border-radius: 8px;
-    border: 1px solid #475569;
+    border-radius: 10px;
+    border: 1.5px solid #475569;
     background: #000;
     display: block;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+  }
+  .action-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 14px;
+    flex-wrap: wrap;
+    gap: 10px;
   }
   .badges {
     display: flex;
     gap: 8px;
-    margin-top: 12px;
     flex-wrap: wrap;
   }
   .badge {
     background: #0369a1;
     color: #e0f2fe;
     font-size: 12px;
-    padding: 4px 10px;
+    padding: 5px 12px;
     border-radius: 6px;
     font-weight: 600;
+  }
+  .btn-download {
+    background: #2563eb;
+    color: white;
+    text-decoration: none;
+    padding: 6px 14px;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    transition: background 0.2s;
+  }
+  .btn-download:hover {
+    background: #1d4ed8;
   }
   .info-grid {
     display: grid;
@@ -79,20 +104,22 @@
   .info-box {
     background: #0f172a;
     border: 1px solid #334155;
-    border-radius: 8px;
-    padding: 12px;
-    font-size: 13px;
+    border-radius: 10px;
+    padding: 14px;
+    font-size: 13.5px;
   }
   .info-box h4 {
-    margin: 0 0 6px;
+    margin: 0 0 8px;
     color: #38bdf8;
+    font-size: 15px;
   }
   code {
     background: #334155;
     padding: 2px 6px;
     border-radius: 4px;
     font-family: monospace;
-    font-size: 12px;
+    font-size: 12.5px;
+    color: #f1f5f9;
   }
 </style>
 </head>
@@ -100,55 +127,60 @@
 
 <div class="container">
   <header>
-    <h1>CS543 Web Services · Tutorial 8</h1>
-    <p class="sub">Node &amp; Express End-to-End Catalogue Service Demonstration</p>
+    <h1>🍴 CS543 Web Services · Tutorial 8 Demonstration</h1>
+    <p class="sub">CampusEats Catalogue &mdash; HTML/CSS &rarr; REST API (Node + Express) &rarr; Data</p>
   </header>
 
   <!-- Video Player Card -->
   <div class="card">
     <div class="card-title">
-      <span>🎬 Recorded Video Demonstration (WebM)</span>
-      <span style="font-size: 12px; color: #10b981; font-weight: normal;">● High Definition</span>
+      <span>🎬 Live Interactive Demonstration Video</span>
+      <span style="font-size: 13px; color: #4ade80; font-weight: 600;">● MP4 (H.264) + WebM</span>
     </div>
-    <video controls autoplay loop muted>
+    <video controls autoplay loop muted playsinline>
+      <source src="demonstration.mp4" type="video/mp4">
       <source src="demonstration.webm" type="video/webm">
       Your browser does not support the video tag.
     </video>
-    <div class="badges">
-      <span class="badge">GET /items (Read menu)</span>
-      <span class="badge">POST /items (Write dish)</span>
-      <span class="badge">Dynamic HTML/CSS Frontend</span>
-      <span class="badge">Express REST Backend</span>
+    <div class="action-row">
+      <div class="badges">
+        <span class="badge">GET /items (Reads menu)</span>
+        <span class="badge">POST /items (Adds dish)</span>
+        <span class="badge">201 Created &amp; 404 Handled</span>
+      </div>
+      <div>
+        <a href="demonstration.mp4" download class="btn-download">⬇ Download MP4 Video</a>
+      </div>
     </div>
   </div>
 
-  <!-- Animated GIF Card -->
+  <!-- GIF Fallback Card -->
   <div class="card">
     <div class="card-title">
-      <span>🎞️ Universal Animated Demonstration (GIF)</span>
-      <span style="font-size: 12px; color: #94a3b8; font-weight: normal;">Autoplay in any viewer</span>
+      <span>🎞️ Universal Animated GIF (Direct Autoplay)</span>
+      <a href="demonstration.gif" download class="btn-download" style="background:#475569;">⬇ Download GIF</a>
     </div>
-    <img src="demonstration.gif" alt="Tutorial 8 Demonstration" class="demo-media">
+    <img src="demonstration.gif" alt="Tutorial 8 Demonstration GIF" style="width:100%; border-radius:10px; border:1.5px solid #475569; display:block;">
   </div>
 
-  <!-- Tutorial Information -->
+  <!-- Architecture & Endpoints -->
   <div class="info-grid">
     <div class="info-box">
-      <h4>Architecture Flow</h4>
-      <p style="margin: 0; line-height: 1.5;">
-        <b>Browser (Frontend):</b> <code>public/index.html</code> + <code>style.css</code><br>
-        ⬇️ <i>HTTP / REST JSON</i><br>
-        <b>API Server:</b> Node.js + Express (<code>server.js</code> on port 3000)<br>
-        ⬇️ <i>In-Memory Storage</i><br>
-        <b>Data:</b> <code>items</code> array
+      <h4>🏗️ Architecture Flow</h4>
+      <p style="margin: 0; line-height: 1.6;">
+        <b>1. Browser Frontend:</b> <code>public/index.html</code> + <code>style.css</code><br>
+        ⬇️ <i>HTTP REST Requests (JSON)</i><br>
+        <b>2. REST API Server:</b> Node.js + Express (<code>server.js</code> on port 3000)<br>
+        ⬇️ <i>In-Memory Persistence</i><br>
+        <b>3. Data:</b> <code>items</code> array
       </p>
     </div>
     <div class="info-box">
-      <h4>Tested REST Endpoints</h4>
-      <ul style="margin: 0; padding-left: 18px; line-height: 1.5;">
-        <li><code>GET /items</code> &mdash; returns 200 OK with all dishes</li>
-        <li><code>GET /items/:id</code> &mdash; returns dish or 404 Not Found</li>
-        <li><code>POST /items</code> &mdash; returns 201 Created on valid body, or 422</li>
+      <h4>🧪 REST API Verification</h4>
+      <ul style="margin: 0; padding-left: 18px; line-height: 1.6;">
+        <li><code>GET /items</code> &mdash; returns <code>200 OK</code> with all dishes</li>
+        <li><code>GET /items/:id</code> &mdash; returns dish or <code>404 Not Found</code></li>
+        <li><code>POST /items</code> &mdash; adds dish with <code>201 Created</code>, or <code>422</code> on missing name</li>
       </ul>
     </div>
   </div>

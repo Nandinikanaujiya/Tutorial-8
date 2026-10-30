@@ -8,14 +8,18 @@
 
 ---
 
-## 🎬 Working Demonstration
+## 🎬 Working Demonstration Videos & Media
 
-This tutorial implementation includes working demonstrations of the application:
+This implementation includes high-definition working demonstrations:
 
-* **High-Definition Video:** [`demonstration.webm`](demonstration.webm) (Playable in Windows Media Player, VLC, Edge, Chrome)
-* **Universal Animated GIF:** [`demonstration.gif`](demonstration.gif) (Embedded below, auto-plays in GitHub and any markdown viewer)
-* **Interactive Player Page:** [`demonstration.html`](demonstration.html) (Side-by-side video viewer and API inspection)
+| Format | File Link | Description | Compatibility |
+| :--- | :--- | :--- | :--- |
+| **MP4 Video (Recommended)** | [**`demonstration.mp4`**](demonstration.mp4) | Standard H.264 video recording of the live app | Opens natively in Windows Media Player, Movies & TV, VLC, mobile phones |
+| **Interactive Player** | [**`demonstration.html`**](demonstration.html) | Modern browser video player with controls & API specs | Open in Edge, Chrome, Firefox, or Safari |
+| **WebM Video** | [**`demonstration.webm`**](demonstration.webm) | High-definition WebM format video | All modern web browsers |
+| **Animated GIF** | [**`demonstration.gif`**](demonstration.gif) | Auto-looping animated demonstration | Embedded below; views anywhere without player |
 
+### 🎞️ Live Demonstration Preview (Auto-Loop):
 ![Catalogue Demonstration](demonstration.gif)
 
 ---
@@ -25,11 +29,11 @@ This tutorial implementation includes working demonstrations of the application:
 The browser never touches the data directly — it only sends HTTP requests to the REST API, and the Express route handlers read and write the data:
 
 ```
-Browser (Front-end) ──HTTP REST (JSON)──> REST API (Node + Express) ──In-Memory──> Data (items array)
+Browser (Front-end UI) ──HTTP REST (JSON)──> REST API (Node + Express) ──In-Memory──> Data (items array)
 ```
 
 1. **Front-End Layer (`public/index.html`, `public/style.css`):**
-   - Clean HTML5 + CSS3 user interface served statically by Express (`express.static('public')`).
+   - Clean, modern, responsive UI with culinary badges, live counter, and dynamic toast notifications.
    - Uses browser `fetch()` for seamless asynchronous HTTP requests (`GET /items` to render, `POST /items` to create).
 2. **REST API Server Layer (`server.js`):**
    - Powered by **Node.js** and **Express.js** running on `http://localhost:3000`.
@@ -47,10 +51,11 @@ Tut_8/
 ├── server.js               # Express REST API server
 ├── package.json            # Project dependencies (express)
 ├── public/                 # Static front-end assets
-│   ├── index.html          # Web page with fetch() and submission form
-│   └── style.css           # Styled layout and cards
-├── demonstration.webm      # High-Definition recorded video demonstration
-├── demonstration.gif       # Animated demonstration GIF
+│   ├── index.html          # Modern web UI with fetch() and submission form
+│   └── style.css           # Premium card layout, badges & animations
+├── demonstration.mp4       # Universal H.264 MP4 video (Opens in Windows Media Player)
+├── demonstration.webm      # High-Definition WebM video
+├── demonstration.gif       # Universal animated demonstration GIF
 ├── demonstration.html      # Interactive video playback page
 ├── record_demo.js          # Automated headless browser recorder script
 ├── make_video.py           # Frame assembly script
@@ -119,8 +124,8 @@ app.listen(3000, () => console.log('Catalogue on http://localhost:3000'));
 
 ### Part 5: The Frontend (`public/index.html`)
 The page performs the full request-response lifecycle:
-1. **Initial Load:** Calls `GET /items` to render the existing menu.
-2. **Form Submission:** Sends `POST /items` with JSON payload `{ name, price }`, resets the form inputs, and refreshes the list dynamically without page reload.
+1. **Initial Load:** Calls `GET /items` to render the existing menu with icons and price tags.
+2. **Form Submission:** Sends `POST /items` with JSON payload `{ name, price }`, shows a confirmation toast, resets inputs, and dynamically refreshes the list without page reload.
 
 ---
 
@@ -186,5 +191,5 @@ HTTP/1.1 201 Created
    http://localhost:3000
    ```
 3. To view the recorded demonstration video:
-   - Open [`demonstration.html`](demonstration.html) directly in any browser.
-   - Or open [`demonstration.webm`](demonstration.webm) in any media player.
+   - Double click [`demonstration.mp4`](demonstration.mp4) to open directly in Windows Media Player.
+   - Or open [`demonstration.html`](demonstration.html) in your browser.
