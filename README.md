@@ -5,6 +5,9 @@
 [![Instructor](https://img.shields.io/badge/Instructor-Dr.%20Pramit%20Mazumdar-darkgreen.svg)]()
 [![Institute](https://img.shields.io/badge/Institute-IIIT%20Vadodara-orange.svg)]()
 [![Platform](https://img.shields.io/badge/Platform-Node.js%20%2B%20Express-brightgreen.svg)]()
+[![Repository](https://img.shields.io/badge/GitHub-Tutorial--8-orange.svg)](https://github.com/Nandinikanaujiya/Tutorial-8)
+
+* **GitHub Repository:** [https://github.com/Nandinikanaujiya/Tutorial-8](https://github.com/Nandinikanaujiya/Tutorial-8)
 
 ---
 
