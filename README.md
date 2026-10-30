@@ -14,10 +14,9 @@ This implementation includes high-definition working demonstrations:
 
 | Format | File Link | Description | Compatibility |
 | :--- | :--- | :--- | :--- |
-| **MP4 Video (Recommended)** | [**`demonstration.mp4`**](demonstration.mp4) | Standard H.264 video recording of the live app | Opens natively in Windows Media Player, Movies & TV, VLC, mobile phones |
-| **Interactive Player** | [**`demonstration.html`**](demonstration.html) | Modern browser video player with controls & API specs | Open in Edge, Chrome, Firefox, or Safari |
-| **WebM Video** | [**`demonstration.webm`**](demonstration.webm) | High-definition WebM format video | All modern web browsers |
-| **Animated GIF** | [**`demonstration.gif`**](demonstration.gif) | Auto-looping animated demonstration | Embedded below; views anywhere without player |
+| **Unified MP4 Video (Single Master Video)** | [**`demonstration.mp4`**](demonstration.mp4) | Complete single video showing terminal curl tests, live UI typing, and 404 test | Opens natively in Windows Media Player, Movies & TV, VLC, Chrome, Edge |
+| **Interactive Player** | [**`demonstration.html`**](demonstration.html) | Modern browser video player with controls & API specs | Open directly in Edge, Chrome, Firefox, or Safari |
+| **Animated Preview GIF** | [**`demonstration.gif`**](demonstration.gif) | Auto-looping animated preview of the entire flow | Embedded below; views anywhere without player |
 
 ### 🎞️ Live Demonstration Preview (Auto-Loop):
 ![Catalogue Demonstration](demonstration.gif)
@@ -53,8 +52,7 @@ Tut_8/
 ├── public/                 # Static front-end assets
 │   ├── index.html          # Modern web UI with fetch() and submission form
 │   └── style.css           # Premium card layout, badges & animations
-├── demonstration.mp4       # Universal H.264 MP4 video (Opens in Windows Media Player)
-├── demonstration.webm      # High-Definition WebM video
+├── demonstration.mp4       # Universal single master MP4 video (Opens directly in Windows Media Player)
 ├── demonstration.gif       # Universal animated demonstration GIF
 ├── demonstration.html      # Interactive video playback page
 ├── record_demo.js          # Automated headless browser recorder script
