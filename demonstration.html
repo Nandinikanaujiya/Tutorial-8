@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CS543 Tutorial 8 — Live Demonstration</title>
+<style>
+  body {
+    margin: 0;
+    padding: 24px;
+    background: #0f172a;
+    color: #f8fafc;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  }
+  .container {
+    max-width: 960px;
+    margin: 0 auto;
+  }
+  header {
+    text-align: center;
+    margin-bottom: 24px;
+    border-bottom: 1px solid #334155;
+    padding-bottom: 16px;
+  }
+  h1 {
+    color: #38bdf8;
+    margin: 0 0 8px;
+    font-size: 24px;
+  }
+  .sub {
+    color: #94a3b8;
+    font-size: 14px;
+    margin: 0;
+  }
+  .card {
+    background: #1e293b;
+    border: 1px solid #334155;
+    border-radius: 10px;
+    padding: 16px;
+    margin-bottom: 24px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  }
+  .card-title {
+    font-size: 16px;
+    font-weight: 700;
+    color: #f1f5f9;
+    margin-bottom: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  video, img.demo-media {
+    width: 100%;
+    border-radius: 8px;
+    border: 1px solid #475569;
+    background: #000;
+    display: block;
+  }
+  .badges {
+    display: flex;
+    gap: 8px;
+    margin-top: 12px;
+    flex-wrap: wrap;
+  }
+  .badge {
+    background: #0369a1;
+    color: #e0f2fe;
+    font-size: 12px;
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-weight: 600;
+  }
+  .info-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-top: 16px;
+  }
+  .info-box {
+    background: #0f172a;
+    border: 1px solid #334155;
+    border-radius: 8px;
+    padding: 12px;
+    font-size: 13px;
+  }
+  .info-box h4 {
+    margin: 0 0 6px;
+    color: #38bdf8;
+  }
+  code {
+    background: #334155;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-family: monospace;
+    font-size: 12px;
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+  <header>
+    <h1>CS543 Web Services · Tutorial 8</h1>
+    <p class="sub">Node &amp; Express End-to-End Catalogue Service Demonstration</p>
+  </header>
+
+  <!-- Video Player Card -->
+  <div class="card">
+    <div class="card-title">
+      <span>🎬 Recorded Video Demonstration (WebM)</span>
+      <span style="font-size: 12px; color: #10b981; font-weight: normal;">● High Definition</span>
+    </div>
+    <video controls autoplay loop muted>
+      <source src="demonstration.webm" type="video/webm">
+      Your browser does not support the video tag.
+    </video>
+    <div class="badges">
+      <span class="badge">GET /items (Read menu)</span>
+      <span class="badge">POST /items (Write dish)</span>
+      <span class="badge">Dynamic HTML/CSS Frontend</span>
+      <span class="badge">Express REST Backend</span>
+    </div>
+  </div>
+
+  <!-- Animated GIF Card -->
+  <div class="card">
+    <div class="card-title">
+      <span>🎞️ Universal Animated Demonstration (GIF)</span>
+      <span style="font-size: 12px; color: #94a3b8; font-weight: normal;">Autoplay in any viewer</span>
+    </div>
+    <img src="demonstration.gif" alt="Tutorial 8 Demonstration" class="demo-media">
+  </div>
+
+  <!-- Tutorial Information -->
+  <div class="info-grid">
+    <div class="info-box">
+      <h4>Architecture Flow</h4>
+      <p style="margin: 0; line-height: 1.5;">
+        <b>Browser (Frontend):</b> <code>public/index.html</code> + <code>style.css</code><br>
+        ⬇️ <i>HTTP / REST JSON</i><br>
+        <b>API Server:</b> Node.js + Express (<code>server.js</code> on port 3000)<br>
+        ⬇️ <i>In-Memory Storage</i><br>
+        <b>Data:</b> <code>items</code> array
+      </p>
+    </div>
+    <div class="info-box">
+      <h4>Tested REST Endpoints</h4>
+      <ul style="margin: 0; padding-left: 18px; line-height: 1.5;">
+        <li><code>GET /items</code> &mdash; returns 200 OK with all dishes</li>
+        <li><code>GET /items/:id</code> &mdash; returns dish or 404 Not Found</li>
+        <li><code>POST /items</code> &mdash; returns 201 Created on valid body, or 422</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
